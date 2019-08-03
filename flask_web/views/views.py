@@ -47,6 +47,6 @@ def book_del():
 @view.route('/down_book', methods=['GET', 'POST'])
 def down_book():
     name = request.args.get('book_name')
-    response = make_response(send_from_directory(config.book_dir, name.encode('utf-8'), as_attachment=True))
+    response = make_response(send_from_directory(config.book_dir, name, as_attachment=True))
     response.headers["Content-Disposition"] = "attachment; filename={}".format(name.encode().decode('latin-1'))
     return response
