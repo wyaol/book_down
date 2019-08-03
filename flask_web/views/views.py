@@ -38,7 +38,7 @@ def book_down():
 @view.route('/book_del', methods=['GET', 'POST'])
 def book_del():
     name = request.args.get('book_name')
-    path = '{}{}'.format(config.book_dir, name)
+    path = '{}{}'.format(config.book_dir, name.encode('utf-8'))
     if os.path.exists(path):
         os.remove(path)
     return render_template('search.html', name=name)
@@ -47,6 +47,6 @@ def book_del():
 @view.route('/down_book', methods=['GET', 'POST'])
 def down_book():
     name = request.args.get('book_name')
-    response = make_response(send_from_directory(config.book_dir, name, as_attachment=True))
+    response = make_response(send_from_directory(config.book_dir, name.encode('utf-8'), as_attachment=True))
     response.headers["Content-Disposition"] = "attachment; filename={}".format(name.encode().decode('latin-1'))
     return response
