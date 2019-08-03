@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>{{ name }}</title>
+</head>
+<body ontouchstart>
+
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__bd" id="rank-list">
+
+            <a href="down_book?book_name={{name}}.txt" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">点击下载</h4>
+                    <p class="weui-media-box__desc">{{name}}</p>
+                </div>
+            </a>
+
+            <a href="book_del?book_name={{name}}.txt" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">点击删除</h4>
+                    <p class="weui-media-box__desc">{{name}}</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <a href="search"><h4>返回首页</h4></a>
+
+</body>
+</html>

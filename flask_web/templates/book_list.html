@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>BookList</title>
+</head>
+<body ontouchstart>
+
+    <div class="weui-content">
+        <div class="weui-c-inner">
+            {% for book_info in book_list %}
+                 <div class="weui-c-content">
+                      <h2 class="weui-c-title"><a href="book_down?url={{book_info['url']}}&book_name={{book_info['book_name']}}" onclick="showLoading()">{{book_info['book_name']}} </a></h2>
+
+                     <div class="weui-c-article">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;{{ book_info['breif'] }}</p>
+                     </div>
+
+                 </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <a href="search"><h4>返回首页</h4></a>
+
+    <script>
+        //在页面未加载完毕之前显示的loading Html自定义内容
+        var _LoadingHtml = '<div id="loadingDiv" style="display: none; "><div id="over" style="position: fixed;top: 0; bottom: 0;right: 0;left: 0;background-color: #f5f5f5;opacity: 0.5;z-index: 1000;"></div><div id="layout" style="height: 30%;width: 30%;position: fixed;left: 40%;top: 45%;margin-left: -16px;margin-top: -16px;z-index: 1001;"><img src="{{ url_for('static', filename='1.gif') }}" style="width: 100%; height: auto"/></div></div>';
+        //呈现loading效果
+        document.write(_LoadingHtml);
+
+        //移除loading效果
+        function completeLoading() {
+                document.getElementById("loadingDiv").style.display="none";
+        }
+        //展示loading效果
+        function showLoading()
+        {
+            document.getElementById("loadingDiv").style.display="block";
+        }
+    </script>
+</body>
+</html>
