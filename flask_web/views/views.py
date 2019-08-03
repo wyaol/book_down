@@ -11,7 +11,7 @@ view = Blueprint('view',__name__)
 def search():
     if request.method == 'POST':
         name = request.form['book_name']
-        if os.path.exists('{}{}.txt'.format(config.book_dir, name)):
+        if os.path.exists('{}{}.txt'.format(config.book_dir, name.encode('utf-8'))):
             return render_template('book.html', name=name)
         else:
             book_down = BookDown_33xs(name)
