@@ -71,28 +71,22 @@ class Get_Book_List_HI_33xs(HtmlInfo):
         pass
 
     def soup_to_info(self, soup: BeautifulSoup):
-        try:
-            soup_list = soup.select('.result-game-item-detail')
+        soup_list = soup.select('.result-game-item-detail')
 
-            info = []
+        info = []
 
-            for each in soup_list:
-                item = {
-                    'book_name': each.select_one('h3 a').get('title'),
-                    'url': ('{}{}').format(config.resquest_33xs['host'], each.select_one('h3 a').get('href')),
-                    'auther': '',
-                    'breif': each.select_one('.result-game-item-desc').text,
-                    'words_count': -1
-                }
-                if self.name in item['book_name']:
-                    info.append(item)
+        for each in soup_list:
+            item = {
+                'book_name': each.select_one('h3 a').get('title'),
+                'url': ('{}{}').format(config.resquest_33xs['host'], each.select_one('h3 a').get('href')),
+                'auther': '',
+                'breif': each.select_one('.result-game-item-desc').text,
+                'words_count': -1
+            }
+            if self.name in item['book_name']:
+                info.append(item)
 
-            if len(info) == 0:
-                raise Exception()
-
-            return info
-        except Exception:
-            raise Exception('您要查找的小说不存在。')
+        return info
 
 
 class Get_Book_Chapters_HI_33xs(HtmlInfo):
@@ -151,32 +145,25 @@ class Get_Book_List_HI_qb5200(HtmlInfo):
         )
 
     def soup_to_info(self, soup: BeautifulSoup):
-        try:
-            soup_list = soup.select('.search-list ul li')
+        soup_list = soup.select('.search-list ul li')
 
-            info = []
+        info = []
 
-            for each in soup_list:
-                try:
-                    item = {
-                        'book_name': each.select_one('.s2 a').text,
-                        'url': each.select_one('.s2 a').get('href'),
-                        'auther': '',
-                        'breif': each.select_one('.s4').text,
-                        'words_count': -1
-                    }
-                    if self.name in item['book_name']:
-                        info.append(item)
-                except Exception:
-                    pass
+        for each in soup_list:
+            try:
+                item = {
+                    'book_name': each.select_one('.s2 a').text,
+                    'url': each.select_one('.s2 a').get('href'),
+                    'auther': '',
+                    'breif': each.select_one('.s4').text,
+                    'words_count': -1
+                }
+                if self.name in item['book_name']:
+                    info.append(item)
+            except Exception:
+                pass
 
-            if len(info) == 0:
-                raise Exception()
-
-            return info
-        except Exception:
-            print(soup.select('body'))
-            raise Exception('您要查找的小说不存在。')
+        return info
 
 
 class Get_Book_Chapters_HI_qb5200(HtmlInfo):

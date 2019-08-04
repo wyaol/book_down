@@ -63,6 +63,8 @@ class BookDown:
         for each in config.source:
             get_list_obj = BookDown.class_factory_from_url(each['host'], BookDown.GET_LIST_CLASS, book_name=self.book_name)
             ret.extend(get_list_obj.info())
+
+        if len(ret) == 0:raise Exception('您要查找的小说不存在')
         return ret
 
 
