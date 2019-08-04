@@ -20,7 +20,32 @@ resquest_33xs = {
     }
 }
 
-source = [resquest_33xs]
+request_qb5200 = {
+    'host': 'http://www.qb5200.tw',
+    'get_book_list': {
+        'url': 'https://so.biqusoso.com/s.php?ie=utf-8&siteid=qb5200.tw&q={}',
+        'headers': {
+            "Host": "so.biqusoso.com",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 SE 2.X MetaSr 1.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            "Accept-Encoding": "gzip, deflate, sdch, br",
+            "Accept-Language": "zh-CN,zh;q=0.8",
+        },
+        'method': 'GET'
+    },
+    'get_book_chapters': {
+        'url': '',
+        'method': 'GET',
+        'encoding': 'gbk'
+    },
+    'get_book_content': {
+        'url': '',
+        'method': 'GET',
+        'encoding': 'gbk'
+    }
+}
+
+source = [resquest_33xs, request_qb5200]
 
 threadpool_size = 50
 

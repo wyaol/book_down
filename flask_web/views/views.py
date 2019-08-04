@@ -11,15 +11,15 @@ view = Blueprint('view',__name__)
 def search():
     if request.method == 'POST':
         name = request.form['book_name']
-        if os.path.exists('{}{}.txt'.format(config.book_dir, name.encode('utf-8'))):
+        if os.path.exists('{}{}.txt'.format(config.book_dir, name)):
             return render_template('book.html', name=name)
         else:
-            try:
-                book_down = BookDown(name)
-                book_list = book_down.get_book_list()
-                return render_template('book_list.html', book_list=book_list)
-            except Exception as e:
-                return render_template('error.html', error=str(e))
+            # try:
+            book_down = BookDown(name)
+            book_list = book_down.get_book_list()
+            return render_template('book_list.html', book_list=book_list)
+            # except Exception as e:
+            #     return render_template('error.html', error=str(e))
 
     else:
         return render_template('search.html')
@@ -37,7 +37,7 @@ def book_down():
 @view.route('/book_del', methods=['GET', 'POST'])
 def book_del():
     name = request.args.get('book_name')
-    path = '{}{}'.format(config.book_dir, name.encode('utf-8'))
+    path = '{}{}'.format(config.book_dir, name)
     if os.path.exists(path):
         os.remove(path)
     return render_template('search.html', name=name)

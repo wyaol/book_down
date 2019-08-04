@@ -34,8 +34,14 @@ class BookDown:
                 url),
             class_type == cls.GET_CONTENT_CLASS and config.resquest_33xs['host'] in url: Get_Book_Content_HI_33xs(
                 url),
-        }
 
+            class_type == cls.GET_LIST_CLASS and config.request_qb5200['host'] in url: Get_Book_List_HI_qb5200(
+                obj_args.get('book_name', '')),
+            class_type == cls.GET_CHAPTER_CLASS and config.request_qb5200['host'] in url: Get_Book_Chapters_HI_qb5200(
+                url),
+            class_type == cls.GET_CONTENT_CLASS and config.request_qb5200['host'] in url: Get_Book_Content_HI_qb5200(
+                url),
+        }
         return tmp[True]
 
     def get_book_list(self):
@@ -97,7 +103,7 @@ class BookDown:
 
         res = ''
         for each in chapters:
-            res += '{}\n{}\n'.format(each['name'], each['content'])
+            res += '{}\n{}\n\n\n'.format(each['name'], each['content'])
 
         return res
 
