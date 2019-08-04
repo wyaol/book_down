@@ -14,12 +14,12 @@ def search():
         if os.path.exists('{}{}.txt'.format(config.book_dir, name)):
             return render_template('book.html', name=name)
         else:
-            # try:
-            book_down = BookDown(name)
-            book_list = book_down.get_book_list()
-            return render_template('book_list.html', book_list=book_list)
-            # except Exception as e:
-            #     return render_template('error.html', error=str(e))
+            try:
+                book_down = BookDown(name)
+                book_list = book_down.get_book_list()
+                return render_template('book_list.html', book_list=book_list)
+            except Exception as e:
+                return render_template('error.html', error=str(e))
 
     else:
         return render_template('search.html')
