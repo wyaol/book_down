@@ -1,7 +1,7 @@
 import os
 from flask import Blueprint, request, render_template, send_from_directory, make_response
 from book_down import config
-from book_down.book_down import BookDown_33xs
+from book_down.book_down import BookDown
 
 
 view = Blueprint('view',__name__)
@@ -14,9 +14,8 @@ def search():
         if os.path.exists('{}{}.txt'.format(config.book_dir, name.encode('utf-8'))):
             return render_template('book.html', name=name)
         else:
-            book_down = BookDown_33xs(name)
-
             try:
+                book_down = BookDown(name)
                 book_list = book_down.get_book_list()
                 return render_template('book_list.html', book_list=book_list)
             except Exception as e:
@@ -30,7 +29,7 @@ def search():
 def book_down():
     url = request.args.get('url')
     name = request.args.get('book_name')
-    book_down = BookDown_33xs(name)
+    book_down = BookDown(name)
     book_down.down_book_from_bok_url(url)
     return render_template('book.html', name=name)
 

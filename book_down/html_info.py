@@ -43,7 +43,7 @@ class HtmlInfo:
         """
         提取soup中HTML页面中标签内容， 加工成字典列表
         :param soup:
-        :return list[dict]:
+        :return list[dict]: list[dict]
         """
         pass
 
@@ -54,7 +54,7 @@ class HtmlInfo:
     def info(self):
         """
         返回
-        :return list[dict]:
+        :return list[dict]: list[dict]
         """
         page = self.get_page()
         soup = self.page_to_soup(page)

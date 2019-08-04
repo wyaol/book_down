@@ -1,9 +1,11 @@
 import sys
 sys.path.append('../')
 
+import warnings
+warnings.filterwarnings("ignore")
+
 from flask import Flask
 from views.views import view
-
 
 
 app = Flask(__name__)
