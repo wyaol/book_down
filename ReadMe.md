@@ -11,7 +11,7 @@ chmod 777 operate.sh
 #### 运行和终止运行
 启动  
 ./operate.sh start  
-停止
+停止  
 ./operate.sh stop
 
 
