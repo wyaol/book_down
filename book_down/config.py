@@ -45,7 +45,10 @@ request_qb5200 = {
     }
 }
 
-source = [resquest_33xs, request_qb5200]
+source = [
+    resquest_33xs,
+    #request_qb5200
+]
 
 threadpool_size = 50
 
